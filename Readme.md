@@ -3,7 +3,9 @@
 ## Tugas Sistem Operasi Modul 3
 
 4a. Membuat program untuk melakukan perkalian matriks dengan ukuran matriks pertama 4x2 dan yang kedua 2x5 dan nantinya isi dalam matriks dalam kodingan dan berisi angka 1-20. 
+
 4b. Membuat program yang mengambil hasil dari perkalian 4a kemudian mencari nilai faktorialnya dan tampilkan dalam bentuk array.
+
 4c. Membuat program untuk mengetahui jumlah file dan direktori saat ini dengan emnggunakan IPC pipes.
 
 #4a
