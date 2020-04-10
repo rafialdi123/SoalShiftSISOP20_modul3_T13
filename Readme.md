@@ -275,31 +275,3 @@ Lalu ada
 ```
 
 kita gunakan fungsi for untuk looping dan gunakan ShmPTR untuk mengeksekusi IPC, kemudian kita print.
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
