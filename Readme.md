@@ -8,7 +8,7 @@
 
 4c. Membuat program untuk mengetahui jumlah file dan direktori saat ini dengan emnggunakan IPC pipes.
 
-#4a
+# 4a
 
 Code : 
 
@@ -279,3 +279,10 @@ Lalu ada
 ```
 
 kita gunakan fungsi for untuk looping dan gunakan ShmPTR untuk mengeksekusi IPC, kemudian kita print.
+
+
+
+
+# 4b
+
+
