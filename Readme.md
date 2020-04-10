@@ -148,6 +148,7 @@ Pada line 1-9 merupakan kode untuk memulai fungsi yang dibutuhkan dalam program 
 #define MAXIMUM 100
 ```
 berfungsi untuk mengkategorikan elemen angka yang akan dimasukkan sesuai yang tertera yaitu belum_ready jika -1 ready adalah 0 siap adalah 1 dan maximum yaitu 100 . Lalu ada
+
 ```
 struct shared{
     int status;
@@ -166,6 +167,7 @@ int kolom = 0;
 ```
 berfungsi untuk menginputkan matriks yang diminta, jadi kita masukkan dulu matriks a yaitu matriks 4x2 dan matriks b yaitu matriks  2x5 sesuai soal, lalu kita masukkan matriks c yaitu matriks 4x5 sebagai sisa kemungkinan yang ada.
 sedangkan kode dibawahnya adalah untuk mendeteksi baris dan kolom. Lalu ada code: 
+
 ```
 void* buat_kali(void* arg) {
   if(kolom >= 5){
@@ -178,10 +180,12 @@ void* buat_kali(void* arg) {
   kolom++;
 }
 ```
+
 yang pertama untuk perintah void* buat_kali adalah untuk memasukkan fungsi perkalian yang diminta, kemudian kita masukkan perintah if nya dengan menyesuaikan kolom, lalu kita fungsikan for untuk mengalikan matriks a dengan b menggunakan rumus baris dikali kolom. 
 
-```
+
 Kemudian ada kode:
+
 ```
 int main() {
   srand(time(NULL));
