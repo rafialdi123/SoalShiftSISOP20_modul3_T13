@@ -365,16 +365,45 @@ kita print agar muncul hasilnya.
 
 
 # 4c 
-      
-      
-      
-     
- 
-  
- 
-    
-    
-    
-    
 
+Pada soal 4c pertama kita gunakan kode berikut untuk menggunakan semua fungsi yang kita pakai ..,
 
+```
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/types.h>
+#include<string.h>
+#include<sys/wait.h>
+```
+Lalu kita gunakan kode ini dengan untuk memindai jumlah file dan direktori saat ini..
+```
+int main() {
+  int deskriptor[2];
+  pid_t pid;
+  pipe(deskriptor);
+
+  pid = fork();
+  if (pid == 0) {
+    dup2(deskriptor[1], 1);
+    close(deskriptor[0]);
+    close(deskriptor[1]);
+    char *argv[] = {"ls", NULL};
+    execv("/bin/ls", argv);
+  }
+ ```
+ lalu kita masukkan program ini dengan fungsi ls | wc-l seperti yang diminta soal 
+ ```
+ while(wait(NULL) > 0);
+
+  pid = fork();
+  if (pid == 0) {
+    dup2(deskriptor[0], 0);
+    close(deskriptor[0]);
+    close(deskriptor[1]);
+    char *argv[] = {"wc", "-l", NULL};
+    execv("/usr/bin/wc", argv);
+  }
+}
+```
+Seperti itulah penjelasan nya, mohon maaf jika ada salah kata. 
