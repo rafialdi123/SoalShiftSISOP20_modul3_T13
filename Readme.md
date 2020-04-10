@@ -285,4 +285,96 @@ kita gunakan fungsi for untuk looping dan gunakan ShmPTR untuk mengeksekusi IPC,
 
 # 4b
 
+Seperti biasa pada line 1-9 adalah kode dasar agar kita bisa menggunakan fungsi yang akan digunakan. Kemudian kita masukkan kategori seperti yang kita lakukan dengan soal 4a
+
+```
+#define BELUM_READY -1
+#define READY 0
+#define SIAP 1
+#define MAXIMUM 100
+```
+jika sudah kita masukkan integer nya lalu kita masuukan kode 
+
+```
+int baris = 0;;
+int KOLOM = 0;
+void* jumlah(void* arg) {
+  int i = *((int*)arg);
+  free(arg);;
+  int total = 0;
+  for(int j = 0; j <= i ;j++){
+    total += j;
+  }
+  if(KOLOM > 4){
+    printf("\n");
+    KOLOM = 0;
+  }
+  printf("%2d %6d ",i,total);
+  KOLOM ++;
+}
+```
+Kita gunakan kode dengan void dan for untuk looping untuk mengambil hasil dari perkalian pada 4a dan menampilkan nya dalam layar lalu kita gunakan kode ..
+
+```
+int main()
+{
+     key_t          ShmKEY;
+     int            ShmID;
+     struct shared  *ShmPTR;
+
+     ShmKEY = ftok("key",100);
+     ShmID = shmget(ShmKEY,sizeof(struct shared),0666);
+     if(ShmID < 0){
+       printf("Client Error\n");
+       exit(1);
+}
+```
+Untuk mengakses shared memory seperti yang kita lakukan pada nomor 4a dengan menggunakan fungsi key kemudian 
+
+```
+ShmPTR = (struct shared*) shmat(ShmID, NULL, 0);
+
+     while (ShmPTR->status != READY);
+
+      pthread_t tid[20];
+      for(int i = 0; i < 20;i++){
+         int *x =  malloc(sizeof(*x));
+         if( x == NULL){
+           printf("Malloc Error\n");
+           exit(1);
+         }
+         *x = ShmPTR->data[i];
+         pthread_create(&(tid[i]), NULL, &jumlah, x);
+        pthread_join(tid[i], NULL);
+
+}
+```
+lalu kita gunakan kode diatas untuk membuat thread seperti yang kita lakukan pada 4a dan yang terakhir ...
+```
+ ShmPTR->status = SIAP;
+      shmdt((void *) ShmPTR);
+
+      printf("\n");
+
+
+    return 0;
+}
+```
+
+kita print agar muncul hasilnya. 
+
+
+# 4c 
+      
+      
+      
+     
+ 
+  
+ 
+    
+    
+    
+    
+
 
