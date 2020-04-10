@@ -178,7 +178,115 @@ void* buat_kali(void* arg) {
   kolom++;
 }
 ```
+yang pertama untuk perintah void* buat_kali adalah untuk memasukkan fungsi perkalian yang diminta, kemudian kita masukkan perintah if nya dengan menyesuaikan kolom, lalu kita fungsikan for untuk mengalikan matriks a dengan b menggunakan rumus baris dikali kolom. 
 
+```
+Kemudian ada kode:
+```
+int main() {
+  srand(time(NULL));
+  printf("Matrix A : \n");
+  for (int i = 0; i < 4; i++) {
+    /* code */
+    for (int j = 0; j < 2; j++) {
+      matrixA[i][j] = rand()%19+1;
+      printf("%2d", matrixA[i][j]);
+      /* code */
+    }
+    printf("\n");
+  }
+```
+kita menggunakan srand() dan rand() untuk mengenerate angka secara acak agar setiap kali dijalankan selalu menghasilkan output yang sama sehingga bisa terwujud dengan apa yang diminta. kemudian setelah itu kita print. Hal itu kita lakukan juga kepada matriks b.
+Lalu ada kode
+```
+  pthread_t tid[20];
+
+  for (int i = 0; i < 20; i++) {
+    /* code */
+    pthread_create(&(tid[i]), NULL, &buat_kali, NULL);
+  }
+
+  for (int i = 0; i < 20; i++) {
+    /* code */
+    pthread_join(tid[i], NULL);
+  }
+  ```
+  Kita menggunakan pthread_t untuk mendelarasikan variabael, kemudian kita masukkan fungsi for lalu kita buat thread dengan menggunakan funsgi pthread_create jika sudah kita gabungkan semua thread menggunakan pthread_join
+  
+  lalu ada kode 
+  ```
+   printf("Hasil kali A dan B :\n");
+  for (int i = 0; i < 4; i++) {
+    /* code */
+    for (int j = 0; j < 5; j++) {
+      printf("%4d", matrixc[i][j]);
+      /* code */
+    }
+    printf("\n");
+  }
+```
+Seperti kita semua tahu printf dilakukan untuk mem-print hasil dari kodingan yang sudah kita buat sebelumnya.
+Lalu ada 
+```
+ key_t          ShmKEY;
+   int            ShmID;
+   struct shared  *ShmPTR;
+
+   ShmKEY = ftok("key",100);
+   ShmID = shmget(ShmKEY,sizeof(struct shared),IPC_CREAT|0666);
+   if(ShmID < 0){
+     printf("Shmget error\n");
+     exit(1);
+   }
+   ```
+   digunakan funsgi key antaralain Shmkey, ShmID,ShmPTR untuk menggunakan IPC, jika sudah..
+   ```
+   ShmPTR = (struct shared *) shmat(ShmID, NULL, 0);
+
+   ShmPTR->status = BELUM_READY;
+   int j = 0;
+   int k = 0;
+   ```
+   lalu kita kategorikan dengan define yang telah kita buat sebelumnya. 
+   Dan yang terakhir, 
+   ```
+    for(int i = 0; i < 20; i++){
+     /* code */
+     if(k >= 5){
+       /* code */
+       j++;
+       k = 0;
+     }
+     ShmPTR->data[i] = matrixc[j][k];
+     k++;
+   }
+    ShmPTR->status = READY;
+
+    printf("Jalanin yang B \n");
+    while (ShmPTR->status != SIAP)
+        sleep(1);
+    printf("B udah jalan\n");
+    shmdt((void *) ShmPTR);
+    printf("Dah share ke B\n");
+    shmctl(ShmID, IPC_RMID, NULL);
+    exit(0);
+    return 0;
+}
+```
+
+kita gunakan fungsi for untuk looping dan gunakan ShmPTR untuk mengeksekusi IPC, kemudian kita print.
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
 
 
 
