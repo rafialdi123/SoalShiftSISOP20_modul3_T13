@@ -147,7 +147,7 @@ Pada line 1-9 merupakan kode untuk memulai fungsi yang dibutuhkan dalam program 
 #define SIAP 1
 #define MAXIMUM 100
 ```
-berfungsi untuk mengkategorikan elemen angka yang akan dimasukkan. Lalu ada
+berfungsi untuk mengkategorikan elemen angka yang akan dimasukkan sesuai yang tertera yaitu belum_ready jika -1 ready adalah 0 siap adalah 1 dan maximum yaitu 100 . Lalu ada
 ```
 struct shared{
     int status;
@@ -164,8 +164,23 @@ int matrixc[4][5];
 int baris = 0;
 int kolom = 0;
 ```
-berfungsi untuk menginputkan matriks yang diminta, jadi kita masukkan dulu matriks 4x2 dan 2x5 sesuai soal, lalu kita masukkan 4x5 sebagai sisa kemungkinan yang ada.
-sedangkan kode dibawahnya adalah untuk mendeteksi baris dan kolom.
+berfungsi untuk menginputkan matriks yang diminta, jadi kita masukkan dulu matriks a yaitu matriks 4x2 dan matriks b yaitu matriks  2x5 sesuai soal, lalu kita masukkan matriks c yaitu matriks 4x5 sebagai sisa kemungkinan yang ada.
+sedangkan kode dibawahnya adalah untuk mendeteksi baris dan kolom. Lalu ada code: 
+```
+void* buat_kali(void* arg) {
+  if(kolom >= 5){
+    kolom = 0;
+    baris++;
+  }
+  for(int i = 0; i < 2;i++){
+    matrixc[baris][kolom] += matrixA[baris][i] * matrixb[i][kolom];
+  }
+  kolom++;
+}
+```
+
+
+
 
 
 
